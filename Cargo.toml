@@ -2,6 +2,12 @@
 name = "toti"
 version = "0.1.0"
 edition = "2021"
+readme = "readme.md"
+description = "Expand macro N times for multiple generics"
+keywords = ["macros", "expand", "proc-macro"]
+homepage = "https://github.com/LIMPIX31/t0t1"
+repository = "https://github.com/LIMPIX31/t0t1"
+authors = ["Danil Karpenko <limpix31@gmail.com>"]
 
 [lib]
 proc-macro = true
