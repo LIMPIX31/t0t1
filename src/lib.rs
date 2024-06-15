@@ -15,6 +15,11 @@ pub fn expand(attrs: TokenStream, input: TokenStream) -> TokenStream {
 
 fn expand_expand(attrs: LitInt, input: ItemMacro) -> syn::Result<proc_macro2::TokenStream> {
 	let n: usize = attrs.base10_parse()?;
+	
+	if n > 32 {
+		Err(Error::TooMuchImpls(32))?;
+	}
+
 	let macro_ident = input.ident.as_ref().ok_or(Error::MacroRulesExpected)?;
 	let idents = (0..n).map(|n| format_ident!("T{n}"));
 	let mut punctuated: Punctuated<Ident, Token![,]> = Punctuated::new();
@@ -35,6 +40,8 @@ fn expand_expand(attrs: LitInt, input: ItemMacro) -> syn::Result<proc_macro2::To
 enum Error {
 	#[error("`macro_rules!` expected")]
 	MacroRulesExpected,
+	#[error("The maximum number of impls must not exceed {0}")]
+	TooMuchImpls(usize)
 }
 
 impl From<Error> for syn::Error {
