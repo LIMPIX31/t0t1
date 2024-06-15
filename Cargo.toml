@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2021"
 readme = "readme.md"
 description = "Expand macro N times for multiple generics"
+license = "MIT OR Apache-2.0"
 keywords = ["macros", "expand", "proc-macro"]
 homepage = "https://github.com/LIMPIX31/t0t1"
 repository = "https://github.com/LIMPIX31/t0t1"

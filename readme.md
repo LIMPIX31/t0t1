@@ -3,7 +3,7 @@
 ## Example
 ```rust
 #[toti::expand(10)]
-macro_rules! vars {
+macro_rules! impls {
   ($($T:ident),+) => {
     impl<$($T),+> Trait for ($($T,)+) {}
   };
